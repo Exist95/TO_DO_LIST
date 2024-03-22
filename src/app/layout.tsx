@@ -16,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div id="backdrop-root"></div>
+        <div id="overlay-root"></div>
+        {children}
+      </body>
     </html>
   )
 }
