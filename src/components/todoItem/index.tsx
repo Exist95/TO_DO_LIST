@@ -14,7 +14,7 @@ const TodoItem = ({ todo }: { todo: ITodo }) => {
   return (
     <Motion variants={variants} initial='initial' animate='animate' layout>
       <input type='checkbox' checked={todo.completed} onChange={() => toggleTodo(todo.id)} />
-      <Text completed={todo.completed}>{todo.text}</Text>
+      <Text completed={todo.completed ? "true" : "false"}>{todo.text}</Text>
       <Button onClick={() => removeTodo(todo.id)}>
         Delete
       </Button>
@@ -23,7 +23,7 @@ const TodoItem = ({ todo }: { todo: ITodo }) => {
 }
 
 interface ITextProps {
-  completed?: boolean;
+  completed: string;
 }
 
 const Motion = styled(motion.li)`
@@ -37,7 +37,7 @@ const Motion = styled(motion.li)`
 const Text = styled.span<ITextProps>`
   display: flex;
   margin: 0 0 0 4px;
-  text-decoration: ${(props) => (props.completed ? 'line-through' : '')};
+  text-decoration: ${(props) => (props.completed === 'true' ? 'line-through' : '')};
 `;
 
 const Button = styled.button`
